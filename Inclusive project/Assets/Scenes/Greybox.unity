@@ -241,6 +241,10 @@ PrefabInstance:
       value: Interactable
       objectReference: {fileID: 0}
     - target: {fileID: 7046690374856030758, guid: 1d3c4c96bd4dd0d43b043ebca89ed257, type: 3}
+      propertyPath: m_Radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7046690374856030758, guid: 1d3c4c96bd4dd0d43b043ebca89ed257, type: 3}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
@@ -297,6 +301,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3516896851401868509, guid: d5d15d9a11b8c414e87339365adf80e0, type: 3}
+      propertyPath: walkingSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3516896851401868509, guid: d5d15d9a11b8c414e87339365adf80e0, type: 3}
+      propertyPath: rotationSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3667131383745035019, guid: d5d15d9a11b8c414e87339365adf80e0, type: 3}
       propertyPath: m_NotificationBehavior
       value: 0

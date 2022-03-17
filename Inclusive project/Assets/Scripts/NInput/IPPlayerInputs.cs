@@ -12,7 +12,7 @@ public class IPPlayerInputs : MonoBehaviour
     [Header("Cursor Settings")]
     public bool lockedCursor, rotateWCursor;
 
-    public void OnMovement(InputValue value) { MovementInput(value.Get<Vector2>()); }
+    public void OnWalk(InputValue value) { MovementInput(value.Get<Vector2>()); }
     public void OnRotate(InputValue value) { if (rotateWCursor) { RotationInput(value.Get<Vector2>()); } }
     public void OnInteract(InputValue value) { InteractionInput(value.isPressed); }
     public void OnRemember(InputValue value) { RememberInput(value.isPressed); }

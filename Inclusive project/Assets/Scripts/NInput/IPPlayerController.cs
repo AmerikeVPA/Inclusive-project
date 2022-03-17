@@ -19,7 +19,7 @@ public class IPPlayerController : MonoBehaviour
 
 
     // Private player
-    private float _speed, _rotateSpeed;
+    private float _speed, _rotateSpeed, _cameraPitch;
     // Private timeout deltatime
     private float _recallTO;
 
@@ -27,6 +27,7 @@ public class IPPlayerController : MonoBehaviour
 
     private CharacterController playerController;
     private IPPlayerInputs ipInputs;
+    private Camera mainCam;
 
     // Character Narrator Source and Elements
     private AudioSource narratorVoice;
@@ -46,7 +47,10 @@ public class IPPlayerController : MonoBehaviour
         _intObjInRange = null;
         interInRange = false;
     }
-
+    private void Awake()
+    {
+        mainCam = GetComponentInChildren<Camera>();
+    }
     private void Start()
     {
         playerController = GetComponent<CharacterController>();
@@ -54,11 +58,7 @@ public class IPPlayerController : MonoBehaviour
 
         _recallTO = recallTimeout;
     }
-    private void Update() 
-    {
-        Interact();
-        Walk(); 
-    }
+    private void Update() { Interact(); /**/ Walk(); }
     private void LateUpdate() { Rotation(); }
     private void Interact()
     {
@@ -75,7 +75,13 @@ public class IPPlayerController : MonoBehaviour
     {
         if(ipInputs.rotation.sqrMagnitude >= treshold)
         {
+            _cameraPitch += ipInputs.rotation.y * rotationSpeed * Time.deltaTime;
             _rotateSpeed = ipInputs.rotation.x * rotationSpeed * Time.deltaTime;
+
+            _cameraPitch = ClampCam(_cameraPitch, -90f, 90f);
+
+            // rotate the camera up and down
+            mainCam.transform.localRotation = Quaternion.Euler(_cameraPitch, 0.0f, 0.0f);
             // rotate the player left and right
             transform.Rotate(Vector3.up * _rotateSpeed);
         }
@@ -93,6 +99,12 @@ public class IPPlayerController : MonoBehaviour
         }
 
         // move the player
-        playerController.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, 0.0f, 0.0f) * Time.deltaTime);
+        playerController.Move(inputDirection.normalized * _speed * Time.deltaTime);
+    }
+    private static float ClampCam(float lfAngle, float lfMin, float lfMax)
+    {
+        if (lfAngle < -360f) lfAngle += 360f;
+        if (lfAngle > 360f) lfAngle -= 360f;
+        return Mathf.Clamp(lfAngle, lfMin, lfMax);
     }
 }
