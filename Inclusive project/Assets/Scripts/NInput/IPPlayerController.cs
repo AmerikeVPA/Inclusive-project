@@ -99,7 +99,7 @@ public class IPPlayerController : MonoBehaviour
         }
 
         // move the player
-        playerController.Move(inputDirection.normalized * _speed * Time.deltaTime);
+        playerController.Move(inputDirection.normalized * Time.deltaTime);
     }
     private static float ClampCam(float lfAngle, float lfMin, float lfMax)
     {
