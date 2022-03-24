@@ -33,19 +33,16 @@ namespace AAAstdio.InclusiveProject
 
         // Character Narrator Source and Elements
         private AudioSource narratorVoice;
-        private GameObject _intObjInRange;
-        private AudioClip objAC;
+        private ObjectController _intObjInRange;
         private NarratorManager narrator;
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.tag == "Interactable")
             {
-                Debug.Log("Obj in rng");
-                other.GetComponent<AudioSource>().Play();
+                if (!other.GetComponent<AudioSource>().isPlaying) { other.GetComponent<AudioSource>().Play(); } 
                 interInRange = true;
-                objAC = other.GetComponent<ObjectController>().recollectionDialogue;
-                _intObjInRange = other.gameObject;
+                _intObjInRange = other.GetComponent<ObjectController>();
             }
         }
         private void OnTriggerExit(Collider other)
@@ -61,25 +58,21 @@ namespace AAAstdio.InclusiveProject
         private void Start()
         {
             playerController = GetComponent<CharacterController>();
-            narratorVoice = GetComponent<AudioSource>();
+            narratorVoice = GetComponentInChildren<AudioSource>();
             ipInputs = GetComponent<IPPlayerInputs>();
 
             _recallTO = recallTimeout;
         }
-        private void Update() { Interact(); /**/ Walk(); }
+        private void Update() { Interact(); Remember(); Walk(); }
         private void LateUpdate() { Rotation(); }
         private void Interact()
         {
-            Debug.Log("No obj in rng");
-            print(ipInputs.interact);
             if (interInRange && _intObjInRange != null)
             {
-               
                 if (ipInputs.interact)
                 {
-                    Debug.Log("Should interact with object");
-                    narratorVoice.PlayOneShot(objAC);
-                    Destroy(_intObjInRange);
+                    narratorVoice.PlayOneShot(_intObjInRange.recollectionDialogue);
+                    _intObjInRange.DestroyObjs();
                 }
             }
         }
@@ -87,10 +80,11 @@ namespace AAAstdio.InclusiveProject
         {
             if (ipInputs.remember)
             {
+                print("Enter remember function");
                 if (!narratorVoice.isPlaying && _recallTO <= 0)
                 {
                     Debug.Log("Should play objective clue");
-                    narratorVoice.PlayOneShot(narrator.ObjectiveClues[0][0]);
+                    narratorVoice.PlayOneShot(narrator.ObjectiveClues[0]);
                 }
             }
         }

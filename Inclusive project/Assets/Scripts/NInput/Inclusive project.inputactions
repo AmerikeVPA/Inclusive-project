@@ -25,21 +25,21 @@
                 },
                 {
                     "name": "Interact",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "ab9adc0e-f362-4e1c-9457-58c579ccbf3f",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Remember",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "15a7beff-fcba-41c7-8b18-bf9773812165",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [

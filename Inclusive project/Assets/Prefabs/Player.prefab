@@ -52,8 +52,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
+  MinDistance: 0.01
+  MaxDistance: 0.5
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -295,7 +295,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkingSpeed: 3.5
   rotationSpeed: 1
-  recallTimeout: 2.5
+  recallTimeout: 0
   interInRange: 0
 --- !u!114 &1668861170424926642
 MonoBehaviour:
