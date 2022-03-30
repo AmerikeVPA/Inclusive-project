@@ -13,7 +13,7 @@ namespace AAAstdio.InclusiveProject
         [Tooltip("Audio dialogue played when object is recollected")]
         public AudioClip recollectionDialogue;
         [Header("Process variables")]
-        [Tooltip("object that will disappear on player interaction")]
+        [Tooltip("Objects that will disappear on player interaction")]
         public List<GameObject> objsToDestroy;
     
         public void DestroyObjs()
