@@ -44,6 +44,10 @@ namespace AAAstdio.InclusiveProject
                 interInRange = true;
                 _intObjInRange = other.GetComponent<ObjectController>();
             }
+            if (other.tag == "AudSrc")
+            {
+
+            }
         }
         private void OnTriggerExit(Collider other)
         {
