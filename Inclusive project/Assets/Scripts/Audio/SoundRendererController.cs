@@ -11,6 +11,10 @@ namespace AAAstdio.InclusiveProject
         //private MeshRenderer _meshRenderer;
         private AudioSource _source;
         private SphereCollider _sphereColl;
+        private float distanceToRender = 0f;
+
+        public GameObject _affectedObj;
+        public bool onRange;
 
         private void Awake()
         {
@@ -19,6 +23,21 @@ namespace AAAstdio.InclusiveProject
 
             _sphereColl.isTrigger = true;
             _sphereColl.radius = _source.maxDistance;
+        }
+        public void CallTransparencyChange(GameObject player)
+        {
+            StartCoroutine(SetTransparecny(player));
+        }
+        IEnumerator SetTransparecny(GameObject player)
+        {
+            while (onRange)
+            {
+                distanceToRender = Vector3.Distance(_affectedObj.transform.position, player.transform.position);
+                foreach(Material mat in _affectedObj.GetComponent<MeshRenderer>().materials)
+                {
+
+                }
+            }
         }
     }
 }

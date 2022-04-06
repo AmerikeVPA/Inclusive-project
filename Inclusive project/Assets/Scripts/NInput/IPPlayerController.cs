@@ -46,13 +46,20 @@ namespace AAAstdio.InclusiveProject
             }
             if (other.tag == "AudSrc")
             {
-
+                other.GetComponent<SoundRendererController>().onRange = true;
             }
         }
         private void OnTriggerExit(Collider other)
         {
-            _intObjInRange = null;
-            interInRange = false;
+            if (other.tag == "Interactable")
+            {
+                _intObjInRange = null;
+                interInRange = false;
+            }
+            if (other.tag == "AudSrc")
+            {
+                other.GetComponent<SoundRendererController>().onRange = false;
+            }
         }
         private void Awake()
         {
