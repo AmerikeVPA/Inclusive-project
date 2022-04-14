@@ -47,6 +47,7 @@ namespace AAAstdio.InclusiveProject
             if (other.tag == "AudSrc")
             {
                 other.GetComponent<SoundRendererController>().onRange = true;
+                other.GetComponent<SoundRendererController>().CallTransparencyChange(this.gameObject.transform);
             }
         }
         private void OnTriggerExit(Collider other)
