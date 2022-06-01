@@ -51,7 +51,7 @@ namespace AAAstdio.InclusiveProject
             if (onRange)
             {
                 distanceToRender = Vector3.Distance(transform.position, player.transform.position);
-                materialAlpha = (distanceToRender - _sphereColl.radius) / (0 - _sphereColl.radius) * (1 - 0) + 0;
+                materialAlpha = (distanceToRender - _sphereColl.radius) / (0 - _sphereColl.radius) * (1.5f - 0) + 0;
                 print(materialAlpha);
                 foreach(Material mat in _affectedMesh.materials)
                 {

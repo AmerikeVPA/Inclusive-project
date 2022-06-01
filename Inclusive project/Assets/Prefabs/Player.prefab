@@ -294,7 +294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkingSpeed: 3.5
-  rotationSpeed: 2.1
+  rotationSpeed: 3.06
   recallTimeout: 0
   interInRange: 0
 --- !u!114 &1668861170424926642
