@@ -39,6 +39,7 @@ namespace AAAstdio.InclusiveProject
         private void Start()
         {
             //_affectedMat.SetColor("_setClear", ogColour);
+            _source.Play();
             StartCoroutine(SetTransparecny(null));
         }
         public void CallTransparencyChange(Transform player)
@@ -52,7 +53,6 @@ namespace AAAstdio.InclusiveProject
             {
                 distanceToRender = Vector3.Distance(transform.position, player.transform.position);
                 materialAlpha = (distanceToRender - _sphereColl.radius) / (0 - _sphereColl.radius) * (1.5f - 0) + 0;
-                print(materialAlpha);
                 foreach(Material mat in _affectedMesh.materials)
                 {
                     Color newColour = new Color(mat.color.r, mat.color.g, mat.color.b, materialAlpha);

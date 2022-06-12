@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Events;
 
 namespace AAAstdio.InclusiveProject
 {
@@ -15,7 +16,9 @@ namespace AAAstdio.InclusiveProject
         [Header("Process variables")]
         [Tooltip("Objects that will disappear on player interaction")]
         public List<GameObject> objsToDestroy;
-    
+
+        public UnityEvent action;
+        
         public void DestroyObjs()
         {
             foreach(GameObject obj in objsToDestroy) { Destroy(obj); }

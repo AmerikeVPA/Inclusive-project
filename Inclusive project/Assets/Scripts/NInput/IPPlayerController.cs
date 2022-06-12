@@ -84,7 +84,7 @@ namespace AAAstdio.InclusiveProject
                 if (ipInputs.interact)
                 {
                     narratorVoice.PlayOneShot(_intObjInRange.recollectionDialogue);
-                    _intObjInRange.DestroyObjs();
+                    _intObjInRange.action.Invoke();
                 }
             }
         }

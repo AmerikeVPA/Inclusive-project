@@ -21,7 +21,7 @@ public class AudioManager : MonoBehaviour
 
         foreach (Sound s in sfx)
         {
-            //s.source = s.source;
+            s.source = s.source;
             s.source.clip = s.clip;
             s.source.volume = s.volume;
             s.source.loop = s.loop;
